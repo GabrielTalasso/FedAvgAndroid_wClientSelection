@@ -9,7 +9,7 @@ from flwr.common import FitIns
 from flwr.server.strategy.aggregate import aggregate, weighted_loss_avg
 from flwr.common.logger import log
 
-class FedServer(fl.server.strategy.FedAvg):
+class FedServer(fl.server.strategy.FedAvgAndroid):
 
 	def __init__(self, aggregation_method, fraction_fit, num_clients, 
 					decay=0, perc_of_clients=0, dataset='', solution_name='', model_name=''):
@@ -49,7 +49,10 @@ class FedServer(fl.server.strategy.FedAvg):
 			self.solution_name = f"{solution_name}-{aggregation_method}"
 
 
-		super().__init__(fraction_fit=fraction_fit, min_available_clients=num_clients, min_fit_clients=num_clients, min_evaluate_clients=num_clients)
+		super().__init__(fraction_fit=fraction_fit, 
+		   min_available_clients=num_clients, 
+		   min_fit_clients=num_clients, 
+		   min_evaluate_clients=num_clients)
 
 	def configure_fit(self, server_round, parameters, client_manager):
 		"""Configure the next round of training."""

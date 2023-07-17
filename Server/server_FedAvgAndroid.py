@@ -35,8 +35,8 @@ from flwr.common import (
 from flwr.server.client_manager import ClientManager
 from flwr.server.client_proxy import ClientProxy
 
-from .aggregate import aggregate, weighted_loss_avg
-from .strategy import Strategy
+from flwr.server.strategy.aggregate import aggregate, weighted_loss_avg
+from flwr.server.strategy.strategy import Strategy
 
 
 class FedAvgAndroid(Strategy):
